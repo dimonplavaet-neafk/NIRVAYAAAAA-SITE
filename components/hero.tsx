@@ -103,27 +103,21 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Text block after banner with blur reveal */}
-      <motion.div 
-        initial={{ opacity: 0, filter: "blur(12px)" }} 
-        whileInView={{ opacity: 1, filter: "blur(0px)" }} 
-        viewport={{ once: true, amount: 0.5 }} 
-        transition={{ duration: 1, ease: "easeOut" }} 
-        className="py-8 md:py-10 flex items-center justify-center" 
-        style={{ background: "var(--background)" }}
-      >
-        <p 
-          style={{ 
-            fontFamily: "'Inter', sans-serif", 
-            fontWeight: 200, 
-            color: "rgba(255,255,255,0.7)", 
-            letterSpacing: "0.25em" 
-          }} 
-          className="text-sm md:text-base lg:text-lg text-center max-w-3xl px-6 uppercase tracking-[0.25em] font-light"
+      {/* Text block after banner with gold lines */}
+      <div className="flex flex-col items-center">
+        <div className="w-[80px] h-px my-6 md:my-8" style={{ background: "linear-gradient(to right, transparent, rgba(200,148,62,0.4), transparent)" }}></div>
+        <motion.p 
+          initial={{ opacity: 0, y: 10 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} 
+          className="text-xs md:text-sm lg:text-base uppercase tracking-[0.2em] text-center px-6" 
+          style={{ fontFamily: "var(--font-heading), 'Rajdhani', sans-serif", fontWeight: 500, color: "rgba(200,180,150,0.5)" }}
         >
           AI-продакшн полного цикла. Клипы. Реклама. Контент. Анимация.
-        </p>
-      </motion.div>
+        </motion.p>
+        <div className="w-[80px] h-px my-6 md:my-8" style={{ background: "linear-gradient(to right, transparent, rgba(200,148,62,0.4), transparent)" }}></div>
+      </div>
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-[15]">
         {particles.map((particle) => (
