@@ -1,0 +1,576 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* NIRVAYA STUDIO Color Palette */
+  --background: #0A0E1A;
+  --background-secondary: #0E1225;
+  --foreground: #D8D4CC;
+  --foreground-muted: #7A8494;
+  
+  --gold: #C8943E;
+  --teal: #1B6B8A;
+  --saffron: #E85D26;
+  
+  --card: #0E1225;
+  --card-foreground: #D8D4CC;
+  --popover: #0E1225;
+  --popover-foreground: #D8D4CC;
+  --primary: #C8943E;
+  --primary-foreground: #0A0E1A;
+  --secondary: #1B6B8A;
+  --secondary-foreground: #D8D4CC;
+  --muted: #151A2E;
+  --muted-foreground: #7A8494;
+  --accent: #E85D26;
+  --accent-foreground: #D8D4CC;
+  --destructive: #E85D26;
+  --destructive-foreground: #D8D4CC;
+  --border: #1F2640;
+  --input: #151A2E;
+  --ring: #C8943E;
+  --radius: 0.5rem;
+  
+  --placeholder-bg: #151A2E;
+  --placeholder-border: #1F2640;
+}
+
+@theme inline {
+  --font-sans: var(--font-sans), 'Inter', system-ui, sans-serif;
+  --font-heading: var(--font-heading), 'Rajdhani', system-ui, sans-serif;
+  
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-gold: var(--gold);
+  --color-teal: var(--teal);
+  --color-saffron: var(--saffron);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-placeholder-bg: var(--placeholder-bg);
+  --color-placeholder-border: var(--placeholder-border);
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+  opacity: 0.8;
+}
+
+/* Breathing animation for triangle dot */
+@keyframes breathe-dot {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-breathe-dot {
+  animation: breathe-dot 4s ease-in-out infinite;
+}
+
+/* Breathing animation */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-breathe {
+  animation: breathe 5s ease-in-out infinite;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Gold glow effect */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(200, 148, 62, 0.3), 0 0 40px rgba(200, 148, 62, 0.1);
+}
+
+.gold-glow-hover:hover {
+  box-shadow: 0 0 30px rgba(200, 148, 62, 0.5), 0 0 60px rgba(200, 148, 62, 0.2);
+}
+
+/* Teal glow effect */
+.teal-glow {
+  box-shadow: 0 0 20px rgba(27, 107, 138, 0.3), 0 0 40px rgba(27, 107, 138, 0.1);
+}
+
+.teal-glow-hover:hover {
+  box-shadow: 0 0 30px rgba(27, 107, 138, 0.5), 0 0 60px rgba(27, 107, 138, 0.2);
+}
+
+/* Saffron button glow */
+.saffron-glow:hover {
+  box-shadow: 0 0 25px rgba(232, 93, 38, 0.5), 0 0 50px rgba(232, 93, 38, 0.2);
+}
+
+/* Pulsing line animation for services section */
+@keyframes pulse-line {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-line {
+  animation: pulse-line 3s ease-in-out infinite;
+}
+
+/* Service card gradient border hover */
+.service-card:hover {
+  background-image: linear-gradient(var(--placeholder-bg), var(--placeholder-bg)), linear-gradient(135deg, rgba(200, 148, 62, 1), rgba(27, 107, 138, 1)) !important;
+  box-shadow: 0 0 30px rgba(200, 148, 62, 0.2), 0 0 60px rgba(27, 107, 138, 0.1);
+}
+
+/* Portfolio border draw animation */
+@keyframes draw-border {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.portfolio-card:hover .portfolio-border-animation {
+  animation: draw-border 0.8s ease-out forwards;
+}
+
+/* Energy wave pulse animation for contacts */
+@keyframes energy-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.6;
+    transform: translateX(5px);
+  }
+}
+
+.animate-energy-pulse {
+  animation: energy-pulse 4s ease-in-out infinite;
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Floating particles animation */
+@keyframes float-up {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--particle-opacity, 0.4);
+  }
+  90% {
+    opacity: var(--particle-opacity, 0.4);
+  }
+  100% {
+    transform: translateY(-100vh) translateX(var(--particle-drift, 20px));
+    opacity: 0;
+  }
+}
+
+.animate-float-up {
+  animation: float-up var(--particle-duration, 15s) linear infinite;
+  animation-delay: var(--particle-delay, 0s);
+}
+
+/* Gold gradient breathing line animation */
+@keyframes breathe-gold-line {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-breathe-gold-line {
+  animation: breathe-gold-line 3s ease-in-out infinite;
+}
+
+/* Lotus stroke draw animation */
+@keyframes stroke-draw {
+  from {
+    stroke-dashoffset: var(--stroke-length, 100);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Lotus breathing animation */
+@keyframes lotus-breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+.animate-lotus-breathe {
+  animation: lotus-breathe 4s ease-in-out infinite;
+}
+
+/* Mandala rotation */
+@keyframes mandala-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-mandala-rotate {
+  animation: mandala-rotate 30s linear infinite;
+}
+
+/* Line grow animation */
+@keyframes line-grow {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 60px;
+    opacity: 1;
+  }
+}
+
+/* Dot pulse animation */
+@keyframes dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+}
+
+/* Triangle dot sequential pulse */
+.animate-dot-pulse-1 {
+  animation: dot-pulse 2s ease-in-out infinite;
+}
+
+.animate-dot-pulse-2 {
+  animation: dot-pulse 2s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.animate-dot-pulse-3 {
+  animation: dot-pulse 2s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+/* Center dot glow */
+@keyframes center-glow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-center-glow {
+  animation: center-glow 4s ease-in-out infinite;
+}
+
+/* Mandala line grow animation */
+@keyframes mandala-line-grow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Center dot pulse for mandala - works with SVG circle */
+@keyframes mandala-center-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    r: 2;
+  }
+  50% {
+    opacity: 0.8;
+    r: 3;
+  }
+}
+
+.animate-mandala-center-pulse {
+  animation: mandala-center-pulse 4s ease-in-out infinite;
+}
+
+/* Triangle center dot pulse - scales 1.0 to 1.5 and opacity 0.4 to 1.0 */
+@keyframes triangle-center-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+}
+
+.animate-triangle-center-pulse {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: triangle-center-pulse 3s ease-in-out infinite;
+}
+
+/* CHANGE 4: Navbar glitch effect on hover */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    text-shadow: none;
+    clip-path: inset(0 0 0 0);
+  }
+  10% {
+    transform: translate(-2px, 1px);
+    text-shadow: 2px 0 #ff0000, -2px 0 #00ffff;
+    clip-path: inset(20% 0 60% 0);
+  }
+  20% {
+    transform: translate(2px, -1px);
+    text-shadow: -2px 0 #ff0000, 2px 0 #00ffff;
+    clip-path: inset(40% 0 30% 0);
+  }
+  30% {
+    transform: translate(-1px, 2px);
+    text-shadow: 1px 0 #ff0000, -1px 0 #00ffff;
+    clip-path: inset(70% 0 10% 0);
+  }
+  40% {
+    transform: translate(1px, -2px);
+    text-shadow: -1px 0 #ff0000, 1px 0 #00ffff;
+    clip-path: inset(10% 0 80% 0);
+  }
+  50%, 100% {
+    transform: translate(0);
+    text-shadow: none;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.glitch-hover:hover .glitch-text {
+  animation: glitch 0.3s ease-in-out;
+}
+
+/* CHANGE 3: Infinity symbol pulse animation */
+@keyframes infinity-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.animate-infinity-pulse {
+  animation: infinity-pulse 3s ease-in-out infinite;
+}
+
+/* CHANGE 6: Circuit board background pattern */
+.circuit-pattern {
+  background-image:
+    /* Horizontal lines */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 59px,
+      rgba(200, 148, 62, 0.02) 59px,
+      rgba(200, 148, 62, 0.02) 60px
+    ),
+    /* Vertical lines */
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 59px,
+      rgba(200, 148, 62, 0.02) 59px,
+      rgba(200, 148, 62, 0.02) 60px
+    ),
+    /* Intersection dots */
+    radial-gradient(
+      circle at 0 0,
+      rgba(200, 148, 62, 0.03) 1px,
+      transparent 1px
+    );
+  background-size: 60px 60px, 60px 60px, 60px 60px;
+  background-position: 0 0, 0 0, 0 0;
+}
+
+/* CHANGE 8: Neon glow on section dividers */
+.divider-neon-glow {
+  filter: drop-shadow(0 0 6px rgba(27, 107, 138, 0.4)) drop-shadow(0 0 12px rgba(27, 107, 138, 0.2));
+}
+
+/* CHANGE 7: Service card hover rings */
+@keyframes ring-expand-1 {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.15;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes ring-expand-2 {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.15;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+.service-card .hover-ring-1,
+.service-card .hover-ring-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid #C8943E;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.service-card .hover-ring-1 {
+  width: 240px;
+  height: 240px;
+}
+
+.service-card .hover-ring-2 {
+  width: 360px;
+  height: 360px;
+}
+
+.service-card:hover .hover-ring-1 {
+  animation: ring-expand-1 0.8s ease-out forwards;
+}
+
+.service-card:hover .hover-ring-2 {
+  animation: ring-expand-2 1s ease-out 0.2s forwards;
+}
+
+/* Stat line fade in */
+@keyframes stat-line-fade {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 40px;
+  }
+}
+
+.animate-stat-line {
+  animation: stat-line-fade 0.5s ease-out forwards;
+}
+
+/* Styles gradient shimmer text */
+.styles-gradient-text {
+  background: linear-gradient(90deg, #C8943E 0%, #1B6B8A 25%, #C8943E 50%, #1B6B8A 75%, #C8943E 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shimmer 4s linear infinite;
+}
+
+@keyframes gradient-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
