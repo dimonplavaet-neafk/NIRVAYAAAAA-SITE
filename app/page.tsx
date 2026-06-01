@@ -15,7 +15,7 @@ import {
   MandalaDivider, 
   VerticalLineDivider 
 } from "@/components/triangle-divider"
-import { FloatingParticlesDivider } from "@/components/floating-particles-divider"
+
 
 export default function Home() {
   return (
@@ -28,7 +28,9 @@ export default function Home() {
       <Services />
       <LotusDivider />
       <Portfolio />
-      <FloatingParticlesDivider />
+      <div className="flex items-center justify-center h-8 md:h-12">
+        <div className="w-[120px] h-px" style={{ background: "linear-gradient(to right, transparent, rgba(200,148,62,0.4), transparent)", animation: "breathe-gold-line 3s ease-in-out infinite" }}></div>
+      </div>
       <FaceTransfer />
       <VerticalLineDivider />
       <MotionControl />

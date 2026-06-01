@@ -103,27 +103,19 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Text block after banner with blur reveal */}
-      <motion.div 
-        initial={{ opacity: 0, filter: "blur(12px)" }} 
-        whileInView={{ opacity: 1, filter: "blur(0px)" }} 
-        viewport={{ once: true, amount: 0.5 }} 
-        transition={{ duration: 1, ease: "easeOut" }} 
-        className="py-8 md:py-10 flex items-center justify-center" 
-        style={{ background: "var(--background)" }}
-      >
-        <p 
-          style={{ 
-            fontFamily: "'Inter', sans-serif", 
-            fontWeight: 200, 
-            color: "rgba(255,255,255,0.7)", 
-            letterSpacing: "0.25em" 
-          }} 
-          className="text-sm md:text-base lg:text-lg text-center max-w-3xl px-6 uppercase tracking-[0.25em] font-light"
+      {/* Badge after banner */}
+      <div className="flex items-center justify-center py-8 md:py-10">
+        <motion.span 
+          initial={{ opacity: 0, y: 10 }} 
+          whileInView={{ opacity: 1, y: 0 }} 
+          viewport={{ once: true }} 
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }} 
+          className="inline-block font-heading font-normal text-xs md:text-sm uppercase tracking-[0.2em] px-5 py-2 rounded-full" 
+          style={{ border: "1px solid rgba(200,148,62,0.2)", background: "rgba(14,18,37,0.8)", color: "rgba(200,148,62,0.75)" }}
         >
-          AI-продакшн полного цикла. Клипы. Реклама. Контент. Анимация.
-        </p>
-      </motion.div>
+          AI-продакшн полного цикла • Клипы • Реклама • Контент • Анимация
+        </motion.span>
+      </div>
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-[15]">
         {particles.map((particle) => (
