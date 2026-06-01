@@ -106,7 +106,7 @@ export function FaceTransfer() {
               playback-id="82b8it1RsNkYbxBQOvDIgH8B28f7kUNzw1501a64pr1w"
               playsinline
               className="absolute inset-0 w-full h-full"
-              style={{ "--controls": "none", objectFit: "cover" }}
+              style={{ objectFit: "cover" }}
             />
           </div>
 
@@ -141,7 +141,7 @@ export function FaceTransfer() {
               playback-id="rXF01vqCO2S4l4gf7rtzakp9wVrCrLwIWHAObM02tf602A"
               playsinline
               className="absolute inset-0 w-full h-full"
-              style={{ "--controls": "none", objectFit: "cover" }}
+              style={{ objectFit: "cover" }}
             />
           </div>
 
