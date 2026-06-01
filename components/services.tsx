@@ -3,6 +3,13 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "mux-player": any
+    }
+  }
+}
 
 const services = [
   {
@@ -101,7 +108,18 @@ export function Services() {
                   <div className="hover-ring-1" />
                   <div className="hover-ring-2" />
                   
-                  {/* Background placeholder */}
+                  {/* Background video or placeholder */}
+                  {service.title === "Social Media и Reels" ? (
+                    <mux-player
+                      playback-id="1Xb00owVniaQvFv4lKY6DOWkXbF5dxv3Vvy60101ziufZY"
+                      autoplay="muted"
+                      loop
+                      muted
+                      playsinline
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{ "--controls": "none" }}
+                    />
+                  ) : null}
                   <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0A0E1A]/90" />
                   
                   {/* Content */}
