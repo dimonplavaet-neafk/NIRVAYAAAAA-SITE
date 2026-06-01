@@ -104,12 +104,8 @@ export function FaceTransfer() {
           >
             <mux-player
               playback-id="82b8it1RsNkYbxBQOvDIgH8B28f7kUNzw1501a64pr1w"
-              autoplay="muted"
-              loop
-              muted
               playsinline
               className="absolute inset-0 w-full h-full object-cover"
-              style={{ "--controls": "none" }}
             />
           </div>
 
@@ -147,12 +143,8 @@ export function FaceTransfer() {
           >
             <mux-player
               playback-id="rXF01vqCO2S4l4gf7rtzakp9wVrCrLwIWHAObM02tf602A"
-              autoplay="muted"
-              loop
-              muted
               playsinline
               className="absolute inset-0 w-full h-full object-cover"
-              style={{ "--controls": "none" }}
             />
           </div>
 
