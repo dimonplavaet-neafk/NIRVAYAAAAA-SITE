@@ -3,6 +3,14 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "mux-player": any
+    }
+  }
+}
+
 const mainProjects = [
   {
     title: "Музыкальные клипы",
@@ -98,11 +106,11 @@ export function Portfolio() {
                 </svg>
               </div>
               <div className="mt-4 flex justify-center">
-                <div 
-                  className="px-6 py-3 rounded-lg text-center transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(200,148,62,0.15)]" 
-                  style={{ 
-                    background: "rgba(14,18,37,0.7)", 
-                    border: "1px solid rgba(200,148,62,0.15)", 
+                <div
+                  className="px-6 py-3 rounded-lg text-center transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(200,148,62,0.15)]"
+                  style={{
+                    background: "rgba(14,18,37,0.7)",
+                    border: "1px solid rgba(200,148,62,0.15)",
                     backdropFilter: "blur(12px)",
                     boxShadow: "0 0 20px rgba(27,107,138,0.08)"
                   }}
@@ -117,22 +125,18 @@ export function Portfolio() {
         {/* Styles section with decorative corners */}
         <div className="relative px-6 py-10 md:px-12 md:py-14">
           {/* Decorative corner lines */}
-          {/* Left top corner */}
           <div className="absolute top-0 left-0 w-8 h-8">
             <div className="absolute top-0 left-0 w-full h-px" style={{ background: "rgba(200,148,62,0.3)" }}></div>
             <div className="absolute top-0 left-0 h-full w-px" style={{ background: "rgba(200,148,62,0.3)" }}></div>
           </div>
-          {/* Right top corner */}
           <div className="absolute top-0 right-0 w-8 h-8">
             <div className="absolute top-0 right-0 w-full h-px" style={{ background: "rgba(200,148,62,0.3)" }}></div>
             <div className="absolute top-0 right-0 h-full w-px" style={{ background: "rgba(200,148,62,0.3)" }}></div>
           </div>
-          {/* Left bottom corner */}
           <div className="absolute bottom-0 left-0 w-8 h-8">
             <div className="absolute bottom-0 left-0 w-full h-px" style={{ background: "rgba(200,148,62,0.3)" }}></div>
             <div className="absolute bottom-0 left-0 h-full w-px" style={{ background: "rgba(200,148,62,0.3)" }}></div>
           </div>
-          {/* Right bottom corner */}
           <div className="absolute bottom-0 right-0 w-8 h-8">
             <div className="absolute bottom-0 right-0 w-full h-px" style={{ background: "rgba(200,148,62,0.3)" }}></div>
             <div className="absolute bottom-0 right-0 h-full w-px" style={{ background: "rgba(200,148,62,0.3)" }}></div>
@@ -140,69 +144,91 @@ export function Portfolio() {
 
           {/* Подзаголовок стилей */}
           <div ref={stylesRef} className="text-center mb-10">
-          <motion.div
-            initial={{ opacity: 0, filter: "blur(12px)" }}
-            animate={stylesInView ? { opacity: 1, filter: "blur(0px)" } : {}}
-            transition={{ duration: 1 }}
-          >
-            <h3 className="font-heading font-semibold text-2xl md:text-4xl uppercase tracking-[0.15em] styles-gradient-text">
-              Стили
-            </h3>
-            <p className="text-foreground/50 text-sm md:text-base mt-3 max-w-md mx-auto">
-              Каждый стиль — это отдельная вселенная. Выбирайте эстетику, а мы воплотим.
-            </p>
-          </motion.div>
-          
-          {/* Glass pill subtitle */}
-          <div className="flex justify-center mt-5 mb-10">
-            <div 
-              className="px-5 py-2.5 rounded-full" 
-              style={{ 
-                background: "rgba(14,18,37,0.7)", 
-                border: "1px solid rgba(200,148,62,0.12)", 
-                backdropFilter: "blur(10px)" 
-              }}
-            >
-              <p 
-                style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic" }} 
-                className="text-foreground/60 text-sm md:text-base"
-              >
-                4 примера из бесконечности вариантов
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Сетка стилей */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
-          {styles.map((style, index) => (
             <motion.div
-              key={style.title}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
-              className="group cursor-pointer"
+              initial={{ opacity: 0, filter: "blur(12px)" }}
+              animate={stylesInView ? { opacity: 1, filter: "blur(0px)" } : {}}
+              transition={{ duration: 1 }}
             >
+              <h3 className="font-heading font-semibold text-2xl md:text-4xl uppercase tracking-[0.15em] styles-gradient-text">
+                Стили
+              </h3>
+              <p className="text-foreground/50 text-sm md:text-base mt-3 max-w-md mx-auto">
+                Каждый стиль — это отдельная вселенная. Выбирайте эстетику, а мы воплотим.
+              </p>
+            </motion.div>
+
+            {/* Glass pill subtitle */}
+            <div className="flex justify-center mt-5 mb-10">
               <div
-                className="relative aspect-video rounded-sm overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(200,148,62,0.15)]"
+                className="px-5 py-2.5 rounded-full"
                 style={{
-                  border: "1px solid rgba(200,148,62,0.15)",
-                  background: "rgba(14,18,37,0.6)",
+                  background: "rgba(14,18,37,0.7)",
+                  border: "1px solid rgba(200,148,62,0.12)",
+                  backdropFilter: "blur(10px)"
                 }}
               >
-                <div className="absolute inset-0 flex items-center justify-center text-foreground-muted text-xs">
-                  Превью
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E1A] via-[#0A0E1A]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                  <h4 className="font-heading font-semibold text-base md:text-lg uppercase tracking-wider text-gold mb-2">{style.title}</h4>
-                  <p className="text-foreground-muted text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">{style.description}</p>
-                </div>
-                <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <p
+                  style={{ fontFamily: "Georgia, 'Times New Roman', serif", fontStyle: "italic" }}
+                  className="text-foreground/60 text-sm md:text-base"
+                >
+                  4 примера из бесконечности вариантов
+                </p>
               </div>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </div>
+
+          {/* Сетка стилей */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+            {styles.map((style, index) => (
+              <motion.div
+                key={style.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
+                className="group cursor-pointer"
+              >
+                <div
+                  className="relative aspect-video rounded-sm overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(200,148,62,0.15)]"
+                  style={{
+                    border: "1px solid rgba(200,148,62,0.15)",
+                    background: "rgba(14,18,37,0.6)",
+                  }}
+                >
+                  {style.title === "Аниме" ? (
+                    <mux-player
+                      playback-id="ruEc7RibKqYuEgHZOCr02neU023n2NapHQURUhmmAiMXs"
+                      autoplay="muted"
+                      loop
+                      muted
+                      playsinline
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{ "--controls": "none" }}
+                    />
+                  ) : style.title === "Пластилин" ? (
+                    <mux-player
+                      playback-id="01L3006COFbi91OPfx00j2pvvrbgqrj01GVBV7R3gYEDhhI"
+                      autoplay="muted"
+                      loop
+                      muted
+                      playsinline
+                      className="absolute inset-0 w-full h-full object-cover"
+                      style={{ "--controls": "none" }}
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center text-foreground-muted text-xs">
+                      Превью
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E1A] via-[#0A0E1A]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <h4 className="font-heading font-semibold text-base md:text-lg uppercase tracking-wider text-gold mb-2">{style.title}</h4>
+                    <p className="text-foreground-muted text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">{style.description}</p>
+                  </div>
+                  <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
