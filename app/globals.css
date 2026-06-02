@@ -605,6 +605,8 @@
 .animate-float-particle {
   animation: float-particle var(--particle-duration, 3s) ease-in-out infinite;
   animation-delay: var(--particle-delay, 0s);
+}
+
 .mux-player-cover {
   --media-object-fit: cover;
   --media-object-position: center;
