@@ -9,6 +9,7 @@ import { About } from "@/components/about"
 import { Contacts } from "@/components/contacts"
 import { Footer } from "@/components/footer"
 import { CursorGlow } from "@/components/cursor-glow"
+import { ContactBubble } from "@/components/contact-bubble"
 import { 
   TriangleDotsDivider, 
   LotusDivider, 
@@ -39,6 +40,7 @@ export default function Home() {
       <VerticalLineDivider />
       <Contacts />
       <Footer />
+      <ContactBubble />
     </main>
   )
 }
