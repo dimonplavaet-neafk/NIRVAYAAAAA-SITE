@@ -63,48 +63,48 @@ export function MotionControl() {
           </div>
         </motion.div>
 
-        {/* Videos: 9:16 left + 16:9 right */}
+        {/* Videos: two 9:16 left + one 16:9 right */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-6 items-center max-w-5xl mx-auto"
+          className="max-w-4xl mx-auto"
         >
-          {/* Video 9:16 (vertical) */}
-          <div
-            className="relative w-full md:w-[240px] lg:w-[280px] aspect-[9/16] rounded-sm overflow-hidden flex-shrink-0 transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(200,148,62,0.15)]"
-            style={{
-              border: "1px solid rgba(200,148,62,0.15)",
-              background: "rgba(14,18,37,0.6)",
-            }}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center">
-                <div className="w-0 h-0 border-l-[8px] border-l-gold/60 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent ml-1" />
+          <div className="grid grid-cols-2 md:grid-cols-[200px_200px_1fr] gap-4 items-start">
+            {/* Video 9:16 #1 */}
+            <div className="relative aspect-[9/16] rounded-sm overflow-hidden" style={{ border: "1px solid rgba(200,148,62,0.15)", background: "rgba(14,18,37,0.6)" }}>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center">
+                  <div className="w-0 h-0 border-l-[6px] border-l-gold/60 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5" />
+                </div>
+              </div>
+              <div className="absolute bottom-2 left-2 right-2 text-center">
+                <span className="text-foreground-muted text-[10px] font-heading tracking-wider">9:16</span>
               </div>
             </div>
-            {/* Label */}
-            <div className="absolute bottom-3 left-3 right-3 text-center">
-              <span className="text-foreground-muted text-xs font-heading tracking-wider">9:16</span>
-            </div>
-          </div>
 
-          {/* Video 16:9 (horizontal) */}
-          <div
-            className="relative aspect-video rounded-sm overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(200,148,62,0.15)]"
-            style={{
-              border: "1px solid rgba(200,148,62,0.15)",
-              background: "rgba(14,18,37,0.6)",
-            }}
-          >
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center">
-                <div className="w-0 h-0 border-l-[8px] border-l-gold/60 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent ml-1" />
+            {/* Video 9:16 #2 */}
+            <div className="relative aspect-[9/16] rounded-sm overflow-hidden" style={{ border: "1px solid rgba(200,148,62,0.15)", background: "rgba(14,18,37,0.6)" }}>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center">
+                  <div className="w-0 h-0 border-l-[6px] border-l-gold/60 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5" />
+                </div>
+              </div>
+              <div className="absolute bottom-2 left-2 right-2 text-center">
+                <span className="text-foreground-muted text-[10px] font-heading tracking-wider">9:16</span>
               </div>
             </div>
-            {/* Label */}
-            <div className="absolute bottom-3 left-3 right-3 text-center">
-              <span className="text-foreground-muted text-xs font-heading tracking-wider">16:9</span>
+
+            {/* Video 16:9 */}
+            <div className="relative col-span-2 md:col-span-1 aspect-video md:aspect-auto md:h-full rounded-sm overflow-hidden" style={{ border: "1px solid rgba(200,148,62,0.15)", background: "rgba(14,18,37,0.6)" }}>
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full border border-gold/30 flex items-center justify-center">
+                  <div className="w-0 h-0 border-l-[6px] border-l-gold/60 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent ml-0.5" />
+                </div>
+              </div>
+              <div className="absolute bottom-2 left-2 right-2 text-center">
+                <span className="text-foreground-muted text-[10px] font-heading tracking-wider">16:9</span>
+              </div>
             </div>
           </div>
         </motion.div>
