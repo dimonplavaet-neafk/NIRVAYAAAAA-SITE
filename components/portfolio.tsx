@@ -43,6 +43,89 @@ const styles = [
   },
 ]
 
+function StyleCard({
+  style,
+  index,
+  isInView,
+}: {
+  style: { title: string; description: string }
+  index: number
+  isInView: boolean
+}) {
+  const playerRef = useRef<HTMLElement>(null)
+
+  const playbackId =
+    style.title === "Аниме"
+      ? "ruEc7RibKqYuEgHZOCr02neU023n2NapHQURUhmmAiMXs"
+      : style.title === "Пластилин"
+        ? "01L3006COFbi91OPfx00j2pvvrbgqrj01GVBV7R3gYEDhhI"
+        : style.title === "Pixar"
+          ? "bLr2WJ4bPA01IiKZHdWQzjj244ucRE5972JdqCWGdpFk"
+          : style.title === "Палех"
+            ? "MNzC02eJ7sIJqlgGjDO8lJ02PBsBe6d9A92OqJz7XkmXo"
+            : null
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
+      className="group cursor-pointer"
+      onMouseEnter={() => {
+        const el = playerRef.current as any
+        if (el) {
+          el.muted = true
+          el.play?.()
+        }
+      }}
+      onMouseLeave={() => {
+        const el = playerRef.current as any
+        if (el) {
+          el.pause?.()
+          el.currentTime = 0
+        }
+      }}
+    >
+      <div
+        className="relative aspect-video rounded-sm overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(200,148,62,0.15)]"
+        style={{ border: "1px solid rgba(200,148,62,0.15)", background: "rgba(14,18,37,0.6)" }}
+      >
+        {playbackId && (
+          <mux-player
+            ref={playerRef}
+            playback-id={playbackId}
+            muted
+            playsinline
+            preload="auto"
+            style={
+              {
+                "--media-object-fit": "cover",
+                "--media-object-position": "center",
+                "--controls": "none",
+                "--media-background-color": "transparent",
+                width: "100%",
+                height: "100%",
+                position: "absolute",
+                inset: "0",
+              } as any
+            }
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E1A] via-[#0A0E1A]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+          <h4 className="font-heading font-semibold text-base md:text-lg uppercase tracking-wider text-gold mb-2">
+            {style.title}
+          </h4>
+          <p className="text-foreground-muted text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            {style.description}
+          </p>
+        </div>
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+    </motion.div>
+  )
+}
+
 export function Portfolio() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
@@ -96,25 +179,7 @@ export function Portfolio() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
             {styles.map((style, index) => (
-              <motion.div key={style.title} initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }} className="group cursor-pointer">
-                <div className="relative aspect-video rounded-sm overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(200,148,62,0.15)]" style={{ border: "1px solid rgba(200,148,62,0.15)", background: "rgba(14,18,37,0.6)" }}>
-                  {style.title === "Аниме" ? (
-                    <mux-player playback-id="ruEc7RibKqYuEgHZOCr02neU023n2NapHQURUhmmAiMXs" autoplay="muted" loop muted playsinline style={{ "--media-object-fit": "cover", "--media-object-position": "center", "--controls": "none", "--media-background-color": "transparent", width: "100%", height: "100%", position: "absolute", inset: "0" } as any} />
-                  ) : style.title === "Пластилин" ? (
-                    <mux-player playback-id="01L3006COFbi91OPfx00j2pvvrbgqrj01GVBV7R3gYEDhhI" autoplay="muted" loop muted playsinline style={{ "--media-object-fit": "cover", "--media-object-position": "center", "--controls": "none", "--media-background-color": "transparent", width: "100%", height: "100%", position: "absolute", inset: "0" } as any} />
-                  ) : style.title === "Pixar" ? (
-                    <mux-player playback-id="bLr2WJ4bPA01IiKZHdWQzjj244ucRE5972JdqCWGdpFk" autoplay="muted" loop muted playsinline style={{ "--media-object-fit": "cover", "--media-object-position": "center", "--controls": "none", "--media-background-color": "transparent", width: "100%", height: "100%", position: "absolute", inset: "0" } as any} />
-                  ) : style.title === "Палех" ? (
-                    <mux-player playback-id="MNzC02eJ7sIJqlgGjDO8lJ02PBsBe6d9A92OqJz7XkmXo" autoplay="muted" loop muted playsinline style={{ "--media-object-fit": "cover", "--media-object-position": "center", "--controls": "none", "--media-background-color": "transparent", width: "100%", height: "100%", position: "absolute", inset: "0" } as any} />
-                  ) : null}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E1A] via-[#0A0E1A]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-5 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                    <h4 className="font-heading font-semibold text-base md:text-lg uppercase tracking-wider text-gold mb-2">{style.title}</h4>
-                    <p className="text-foreground-muted text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300">{style.description}</p>
-                  </div>
-                  <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </motion.div>
+              <StyleCard key={style.title} style={style} index={index} isInView={isInView} />
             ))}
           </div>
         </div>
