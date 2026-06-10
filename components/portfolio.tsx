@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef, useEffect } from "react"
+import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 
 declare global {
@@ -118,25 +118,6 @@ export function Portfolio() {
   const isInView = useInView(ref, { once: true, amount: 0.1 })
   const stylesRef = useRef(null)
   const stylesInView = useInView(stylesRef, { once: true, amount: 0.3 })
-  const clipRef = useRef<HTMLElement>(null)
-  const adRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const handleFullscreenChange = () => {
-      if (!document.fullscreenElement) {
-        const els = [clipRef.current, adRef.current] as any[]
-        els.forEach((el) => {
-          if (el) {
-            el.pause?.()
-            el.muted = true
-            el.style.setProperty("--controls", "none")
-          }
-        })
-      }
-    }
-    document.addEventListener("fullscreenchange", handleFullscreenChange)
-    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange)
-  }, [])
 
   return (
     <section id="portfolio" className="py-24 md:py-32 bg-[#0A0E1A] relative overflow-hidden">
@@ -152,49 +133,29 @@ export function Portfolio() {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0 }}
-            className="group cursor-pointer"
-            onClick={() => {
-              const el = clipRef.current as any
-              if (el) {
-                el.muted = false
-                el.currentTime = 0
-                el.play?.()
-                el.requestFullscreen?.()
-                el.style.setProperty("--controls", "")
-              }
-            }}
           >
             <div
-              className="relative aspect-video rounded-sm overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(200,148,62,0.15)]"
+              className="relative aspect-video rounded-sm overflow-hidden"
               style={{ border: "1px solid rgba(200,148,62,0.15)", background: "rgba(14,18,37,0.6)" }}
             >
               <mux-player
-                ref={clipRef}
                 playback-id="vchY00QS56bLhrU1mfUilgwFOBogxXi35hx01cllp2wZs"
-                muted
                 playsinline
                 preload="auto"
                 thumbnail-time="5"
+                accent-color="#C8943E"
                 style={{
                   "--media-object-fit": "cover",
                   "--media-object-position": "center",
-                  "--controls": "none",
                   width: "100%",
                   height: "100%",
                   position: "absolute",
                   inset: "0",
                 } as any}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E1A]/80 via-transparent to-transparent pointer-events-none" />
-              <span className="absolute top-4 left-4 font-heading font-semibold text-2xl text-gold/30 z-10">01</span>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-16 h-16 rounded-full border-2 border-gold/50 flex items-center justify-center bg-[#0A0E1A]/60 backdrop-blur-sm">
-                  <div className="w-0 h-0 border-l-[10px] border-l-gold border-t-[7px] border-t-transparent border-b-[7px] border-b-transparent ml-1" />
-                </div>
-              </div>
             </div>
             <div className="mt-4 flex justify-center">
-              <div className="px-6 py-3 rounded-lg text-center transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(200,148,62,0.15)]" style={{ background: "rgba(14,18,37,0.7)", border: "1px solid rgba(200,148,62,0.15)", backdropFilter: "blur(12px)" }}>
+              <div className="px-6 py-3 rounded-lg text-center" style={{ background: "rgba(14,18,37,0.7)", border: "1px solid rgba(200,148,62,0.15)", backdropFilter: "blur(12px)" }}>
                 <h3 className="font-heading font-semibold text-lg md:text-xl uppercase tracking-[0.15em] text-gold">Музыкальные клипы</h3>
               </div>
             </div>
@@ -205,49 +166,29 @@ export function Portfolio() {
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="group cursor-pointer"
-            onClick={() => {
-              const el = adRef.current as any
-              if (el) {
-                el.muted = false
-                el.currentTime = 0
-                el.play?.()
-                el.requestFullscreen?.()
-                el.style.setProperty("--controls", "")
-              }
-            }}
           >
             <div
-              className="relative aspect-video rounded-sm overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_25px_rgba(200,148,62,0.15)]"
+              className="relative aspect-video rounded-sm overflow-hidden"
               style={{ border: "1px solid rgba(200,148,62,0.15)", background: "rgba(14,18,37,0.6)" }}
             >
               <mux-player
-                ref={adRef}
                 playback-id="00mwZl6zWVACkDXTTRfZLe02uB01hJH01Jtl502hr2PQt9Xs"
-                muted
                 playsinline
                 preload="auto"
                 thumbnail-time="5"
+                accent-color="#C8943E"
                 style={{
                   "--media-object-fit": "cover",
                   "--media-object-position": "center",
-                  "--controls": "none",
                   width: "100%",
                   height: "100%",
                   position: "absolute",
                   inset: "0",
                 } as any}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E1A]/80 via-transparent to-transparent pointer-events-none" />
-              <span className="absolute top-4 left-4 font-heading font-semibold text-2xl text-gold/30 z-10">02</span>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="w-16 h-16 rounded-full border-2 border-gold/50 flex items-center justify-center bg-[#0A0E1A]/60 backdrop-blur-sm">
-                  <div className="w-0 h-0 border-l-[10px] border-l-gold border-t-[7px] border-t-transparent border-b-[7px] border-b-transparent ml-1" />
-                </div>
-              </div>
             </div>
             <div className="mt-4 flex justify-center">
-              <div className="px-6 py-3 rounded-lg text-center transition-all duration-300 group-hover:shadow-[0_0_30px_rgba(200,148,62,0.15)]" style={{ background: "rgba(14,18,37,0.7)", border: "1px solid rgba(200,148,62,0.15)", backdropFilter: "blur(12px)" }}>
+              <div className="px-6 py-3 rounded-lg text-center" style={{ background: "rgba(14,18,37,0.7)", border: "1px solid rgba(200,148,62,0.15)", backdropFilter: "blur(12px)" }}>
                 <h3 className="font-heading font-semibold text-lg md:text-xl uppercase tracking-[0.15em] text-gold">Рекламные ролики</h3>
               </div>
             </div>
