@@ -139,7 +139,7 @@ export function Portfolio() {
               style={{ border: "1px solid rgba(200,148,62,0.15)", background: "rgba(14,18,37,0.6)" }}
             >
               <mux-player
-                playback-id="vchY00QS56bLhrU1mfUilgwFOBogxXi35hx01cllp2wZs"
+                playback-id="5VX1yMSNDZK431tYIi9E003vvO6Fh01jY02M6pTQhFxxSE"
                 playsinline
                 preload="auto"
                 thumbnail-time="5"
